@@ -77,7 +77,14 @@ router.get('/:id', (req, res) => {
 
 //Delete Route
 router.delete('/:id', (req, res) => {
-    
+    Photo.findByIdAndRemove(req.params.id, (err, deletedPhoto) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log(deletedPhoto);
+            res.redirect('/photos');
+        }
+    });
 });
 
 
