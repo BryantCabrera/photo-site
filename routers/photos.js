@@ -27,14 +27,14 @@ router.get('/new', (req, res) => {
 
 //Create Route
 router.post('/', (req, res) => {
-    // Photo.create(req.body, (err, createdPhoto) => {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         console.log(createdPhoto);
-    //         res.render('../views/photos/new.ejs');
-    //     }
-    // });
+    Photo.create(req.body, (err, createdPhoto) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(createdPhoto);
+            res.redirect('/photos');
+        }
+    });
 });
 
 //Edit Route
