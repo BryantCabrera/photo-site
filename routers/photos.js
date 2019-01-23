@@ -22,19 +22,19 @@ router.get('/', (req, res) => {
 
 //New Route
 router.get('/new', (req, res) => {
-    Photo.create(req.body, (err, createdPhoto) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(createdPhoto);
-            res.render('../views/photos/new.ejs');
-        }
-    });
+    res.render('../views/photos/new.ejs');
 });
 
 //Create Route
 router.post('/', (req, res) => {
-    
+    // Photo.create(req.body, (err, createdPhoto) => {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         console.log(createdPhoto);
+    //         res.render('../views/photos/new.ejs');
+    //     }
+    // });
 });
 
 //Edit Route
