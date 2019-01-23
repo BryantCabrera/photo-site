@@ -52,7 +52,14 @@ router.get('/:id/edit', (req, res) => {
 
 //Update Route
 router.put('/:id', (req, res) => {
-    
+    Photo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, foundPhoto) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log(foundPhoto);
+            res.redirect('/photos');
+        }
+    });
 });
 
 //Show Route
