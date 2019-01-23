@@ -1,16 +1,18 @@
 <%- include('../partials/header', { 
-    title: 'New Photos Page'
+    title: `${photo.title}'s Show Page`
 }); %>
-<!--
+
     <main>
-        <h1>New Photos Page</h1>
+        <h1><%= photo.title %>'s Photos Show Page</h1>
         <ul>
-            <li><%= photo.title %> by <%= photo.user %><br>
-            <img src="<%= photo.url %>" alt="<%= photo.title %> Image" title="<%= photo.title %> Image"><br>
-            </li>
+            <li><%= photo.title %> by <%= photo.user %></li><br>
+            <li><img src="<%= photo.url %>" alt="<%= photo.title %> Image" title="<%= photo.title %> Image"></li><br>
+            <li><%= photo.description %></li>
         </ul>
-        <a href="/photos/<%= photo._id %>/edit">Edit <%= photo.title %></a><br>
+        <a href="/photos/<%= photo._id %>/edit"><button type="submit">Edit <%= photo.title %></button></a><br>
+        <form action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete <%= photo.title %></button>
+        </form>
     </main>
-    -->
 
 <%- include('../partials/footer') %>
