@@ -5,12 +5,15 @@ const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
+const photosRouter = require('./routers/photos');
+
 /********** MIDDLEWARE **********/
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 /********** ROUTERS/CONTROLLERS **********/
+app.use('/photos', photosRouter);
 
 /********** LISTENER **********/
 app.listen(3000, () => {
