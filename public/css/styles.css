@@ -1,0 +1,108 @@
+/******************************/
+/********** Set-Up **********/
+/******************************/
+:root {
+    --background-color-1: #67b26f;
+    --background-color-2: #4ca2cd;
+    --background-color-3: #5aaa9d
+
+
+    --button-color-1: rgba(247, 216, 87, 0.8);
+    --button-color-2: rgba(245, 200, 13, 1);
+    --button-color-3: rgba(194, 158, 10, 0.8);
+
+    --text-color1: rgba(190, 0, 16, 1); /*#BE0010*/
+    --text-color2: rgb(151, 3, 15); /*#BE0010*/
+    --text-color3: rgb(122, 2, 12); /*#BE0010*/
+
+    --color-white: rgba(255, 255, 255, 1);
+    --color-black: rgba(0, 0, 0, 1);
+    --color-black-transparent: rgba(0, 0, 0, 0.5);
+    --background-color-light: rgba(207, 227, 244, .7);
+    --background-color-medium: rgba(83, 83, 83, 0.5);
+
+    --border-radius-small: .3rem;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to bottom right, var(--background-color-1), var(--background-color-2));
+}
+
+/******************************/
+/********** Reusable **********/
+/******************************/
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    padding: .5rem;
+    margin: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--text-color2);
+    box-shadow: .2rem .2rem .2rem var(--color-black);
+    background-image: radial-gradient(var(--button-color-1), var(--button-color-2));
+    border: .1rem solid var(--button-color-3);
+    border-radius: var(--border-radius-small);
+    transition: all .2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(var(--color-black),.2);
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+/******************************/
+/********** Nav **********/
+/******************************/
+
+
+
+/******************************/
+/********** Main **********/
+/******************************/
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5rem 1fr 5rem;
+    grid-template-areas: "title"
+                         "imgs"
+                         "btn";
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    grid-area: title;
+}
+
+ul {
+    grid-area: imgs;
+}
+
+.create {
+    grid-area: btn;
+    justify-self: center;
+}
+
+/******************************/
+/********** Footer **********/
+/******************************/
