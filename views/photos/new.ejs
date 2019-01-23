@@ -6,9 +6,10 @@
         <h1>New Photos Page</h1>
         
         <form action="/photos" method="POST">
-            Title: <input type="text" name="title"><br>
-            User: <input type="text" name="user"><br>
             URL: <input type="text" name="url"><br>
+            User: <input type="text" name="user"><br>
+            Title: <input type="text" name="title" maxlength="10"><br>
+            Description: <input type="text" name="description"><br>
             <button type="submit">Create New Photo</button>
         </form>
     </main>

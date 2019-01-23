@@ -1,0 +1,17 @@
+<%- include('../partials/header', { 
+    title: `${photo.title}'s Edit Page`
+}); %>
+
+    <main>
+        <h1><%= photo.title %>'s Edit Page</h1>
+        
+        <form action="/photos/<%= photo._id %>?_method=PUT" method="POST">
+            URL: <input type="text" name="url" value="<%= photo.url %>"><br>
+            User: <input type="text" name="user" value="<%= photo.user %>"><br>
+            Title: <input type="text" name="title" value="<%= photo.title %>" maxlength="10"><br>
+            Description: <input type="text" name="description" value="<%= photo.description %>"><br>
+            <button type="submit">Edit <%= photo.title %></button>
+        </form>
+    </main>
+
+<%- include('../partials/footer') %>

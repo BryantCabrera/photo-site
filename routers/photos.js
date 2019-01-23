@@ -39,7 +39,15 @@ router.post('/', (req, res) => {
 
 //Edit Route
 router.get('/:id/edit', (req, res) => {
-    
+    Photo.findById(req.params.id, (err, foundPhoto) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('../views/photos/edit.ejs', {
+                photo: foundPhoto
+            });
+        }
+    });
 });
 
 //Update Route
