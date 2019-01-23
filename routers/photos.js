@@ -11,7 +11,7 @@ const Photo = require('../models/photos');
 router.get('/', (req, res) => {
     Photo.find({}, (err, allPhotos) => {
         if (err) {
-            console.log(err);
+            res.send(err);
         } else {
             res.render('../views/photos/index.ejs', {
                 photos: allPhotos
@@ -29,7 +29,7 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
     Photo.create(req.body, (err, createdPhoto) => {
         if (err) {
-            console.log(err);
+            res.send(err);
         } else {
             console.log(createdPhoto);
             res.redirect('/photos');
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     Photo.findById(req.params.id, (err, foundPhoto) => {
         if (err) {
-            console.log(err);
+            res.send(err);
         } else {
             res.render('../views/photos/edit.ejs', {
                 photo: foundPhoto
@@ -59,7 +59,7 @@ router.put('/:id', (req, res) => {
 router.get('/:id', (req, res) => {
     Photo.findById(req.params.id, (err, foundPhoto) => {
         if (err) {
-            console.log(err);
+            res.send(err);
         } else {
             res.render('../views/photos/show.ejs', {
                 photo: foundPhoto
