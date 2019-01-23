@@ -49,7 +49,15 @@ router.put('/:id', (req, res) => {
 
 //Show Route
 router.get('/:id', (req, res) => {
-    
+    Photo.findById(req.params.id, (err, foundPhoto) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('../views/photos/show.ejs', {
+                photo: foundPhoto
+            });
+        }
+    });
 });
 
 //Delete Route
