@@ -8,13 +8,13 @@ mongoose.connect(connectionString, {
 });
 
 mongoose.connection.on('connected', () => {
-    console.log(`Mongoose connected to ${connectionString}.`)
+    console.log(`Mongoose connected to ${connectionString}.`);
 });
 
 mongoose.connection.on('error', (err) => {
-    console.log(`Mongoose ran into an ${err}.`)
+    console.log(`Mongoose ran into an ${err}.`);
 });
 
 mongoose.connection.on('disconnected', () => {
-    console.log(`Mongoose disconnected from ${connectionString}.`)
+    console.log(`Mongoose disconnected from ${connectionString}.`);
 });
