@@ -58,12 +58,26 @@ router.get('/:id', (req, res) => {
 //Delete Route
 router.delete('/:id', (req, res) => {
     User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-        if (err) {
-            res.send(err);
-        } else {
-            console.log(deletedUser);
-            res.redirect('/users');
+        const photosIds = [];
+        for (let i = 0; i < deletedUser.photos.length; i++) {
+            photosIds.push(deletedUser.photos[i]._id);
         }
+
+        Photo.deleteMany(
+            {
+                _id: {
+                    $in: photoIds
+                }
+            },
+            (err, data) => {
+                if (err) {
+                    res.send(err);
+                } else {
+                    console.log(deletedUser);
+                    res.redirect('/users');
+                }
+            }
+        ); 
     });
 });
 
