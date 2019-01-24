@@ -43,6 +43,17 @@ router.post('/', (req, res) => {
 //Update Route
 
 //Show Route
+router.get('/:id', (req, res) => {
+    User.findById(req.params.id, (err, foundUser) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('../views/users/show.ejs', {
+                user: foundUser
+            });
+        }
+    });
+});
 
 //Delete Route
 
