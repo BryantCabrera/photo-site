@@ -39,6 +39,17 @@ router.post('/', (req, res) => {
 });
 
 //Edit Route
+router.get('/:id/edit', (req, res) => {
+    User.findById(req.params.id, (err, foundUser) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('../views/photos/edit.ejs', {
+                user: foundUser
+            });
+        }
+    });
+});
 
 //Update Route
 
