@@ -1,0 +1,43 @@
+<%- include('../partials/header', { 
+    title: `${user.name}'s Show Page`
+}); %>
+
+    <main>
+        <h1><%= user.name %>'s Users Show Page</h1>
+        <p>
+            <%= user.description %>
+        </p>
+        <ul>
+            <% user.photos.forEach( photo => { %>
+                <li><figure class="photo">
+                    <div class="photo__hero">
+                        <img src="<%= photo.url %>" alt="<%= photo.title %> Image" title="<%= photo.title %> Image" class="photo__img">
+                    </div>
+
+                    <div class="photo__content">
+                        <div class="photo__heading">
+                            <div class="photo__title">
+                                <h2><%= photo.title %></h2>
+                            </div>
+                            <div class="photo__user">
+                                by <%= photo.user %>
+                            </div>
+                        </div>
+                        <p class="photo__description">
+                            <%= photo.description %>
+                        </p>
+                    </div>
+
+                    <div class="photo__edit">
+                        <a href="/photos/<%= photo._id %>">Edit</a>
+                    </div>
+                </figure></li>
+            <% }) %>
+        </ul>
+        <a href="/users/<%= user._id %>/edit"><button type="submit">Edit <%= user.name %></button></a><br>
+        <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete <%= user.name %></button>
+        </form>
+    </main>
+
+<%- include('../partials/footer') %>
