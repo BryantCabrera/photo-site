@@ -22,7 +22,11 @@ router.get('/', (req, res) => {
 
 //New Route
 router.get('/new', (req, res) => {
-    res.render('../views/photos/new.ejs');
+    User.find({}, (err, allUsers) => {
+        res.render('../views/photos/new.ejs', {
+            users: allUsers
+        });
+    });
 });
 
 //Create Route
