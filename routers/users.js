@@ -44,7 +44,7 @@ router.get('/:id/edit', (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            res.render('../views/photos/edit.ejs', {
+            res.render('../views/users/edit.ejs', {
                 user: foundUser
             });
         }
