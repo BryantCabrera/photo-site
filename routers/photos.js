@@ -27,14 +27,22 @@ router.get('/new', (req, res) => {
 
 //Create Route
 router.post('/', (req, res) => {
-    Photo.create(req.body, (err, createdPhoto) => {
-        if (err) {
-            res.send(err);
-        } else {
-            console.log(createdPhoto);
-            res.redirect('/photos');
-        }
-    });
+    User.findById(req.body.userId, (err, foundUser) => {
+        console.log(err, foundUser);
+        Photo.create(req.body, (err, createdPhoto) => {
+            if (err) {
+                res.send(err);
+            } else {
+                console.log(createdPhoto);
+
+                foundUser.photos.push(createdPhoto);
+
+                foundUser.save((err, data) => {
+                    res.redirect('/photos');
+                });
+            }
+        });
+    }); 
 });
 
 //Edit Route

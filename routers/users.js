@@ -56,6 +56,16 @@ router.get('/:id', (req, res) => {
 });
 
 //Delete Route
+router.delete('/:id', (req, res) => {
+    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log(deletedUser);
+            res.redirect('/users');
+        }
+    });
+});
 
 /********** EXPORTS **********/
 module.exports = router;
