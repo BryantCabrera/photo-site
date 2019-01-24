@@ -6,7 +6,7 @@
         <h1><%= photo.title %>'s Edit Page</h1>
         
         <form action="/photos/<%= photo._id %>?_method=PUT" method="POST">
-            URL: <select name="userId">
+            User: <select name="userId">
                     <% for (let i = 0; i < users.length; i++) { %>
                     <option value="<%= users[i]._id %>" 
                         <% if (users[i]._id.toString() === photoUser._id.toString()) {%>
@@ -15,7 +15,7 @@
                     ><%= users[i].name %></option>
                     <% } %>
                 </select><br>
-            User: <input type="text" name="user" value="<%= photo.user %>"><br>
+            URL: <input type="text" name="url" value="<%= photo.url %>"><br>
             Title: <input type="text" name="title" value="<%= photo.title %>" maxlength="10"><br>
             Description: <input type="text" name="description" value="<%= photo.description %>"><br>
             <button type="submit">Edit <%= photo.title %></button>

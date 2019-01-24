@@ -74,13 +74,39 @@ router.get('/:id/edit', (req, res) => {
 
 //Update Route
 router.put('/:id', (req, res) => {
-    Photo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, foundPhoto) => {
-        if (err) {
-            res.send(err);
-        } else {
-            console.log(foundPhoto);
-            res.redirect('/photos');
-        }
+    Photo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedPhoto) => {
+        User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
+            //remove photo from original user
+            foundUser.photos.id(req.params.id).remove();
+
+            if(foundUser._id.toString() !== req.body.userId) {
+                //find new user
+                foundUser.save((err, savedFoundUser) => {
+                    //update the new user's collection
+                    User.findById(req.body.userId, (err, newUser) => {
+                        //updated photo has a mongo id
+                        newUser.photos.push(updatedPhoto);
+
+                        //save the newUser
+                        newUser.save((err, savedNewUser) => {
+                            res.redirect('/photos');
+                        })
+                    });
+                    
+                });
+            } else {
+                foundUser.photos.push(updatedPhoto);
+
+                foundUser.save((err, data) => {
+                    if (err) {
+                        res.send(err);
+                    } else {
+                        console.log(updatedPhoto);
+                        res.redirect('/photos');
+                    }
+                });
+            }
+        });
     });
 });
 
