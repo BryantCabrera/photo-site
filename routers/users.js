@@ -27,6 +27,16 @@ router.get('/new', (req, res) => {
 });
 
 //Create Route
+router.post('/', (req, res) => {
+    User.create(req.body, (err, createdUser) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log(createdUser);
+            res.redirect('/users');
+        }
+    });
+});
 
 //Edit Route
 
