@@ -1,37 +1,38 @@
 <%- include('../partials/header', { 
-    title: 'Photos Index Page'
+    title: 'Users Index Page'
 }); %>
 
     <main>
-        <h1>Photos Index Page</h1>
+        <h1>Users Index Page</h1>
         <ul>
-            <% photos.forEach( photo => { %>
+            <% users.forEach( user => { %>
                 <li><figure class="photo">
                     <div class="photo__hero">
-                        <img src="<%= photo.url %>" alt="<%= photo.title %> Image" title="<%= photo.title %> Image" class="photo__img">
+                        <img src="https://images.unsplash.com/photo-1535930749574-1399327ce78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=976&q=80" alt="<%= user.name %> Image" title="<%= user.name %> Image" class="photo__img">
                     </div>
 
                     <div class="photo__content">
                         <div class="photo__heading">
                             <div class="photo__title">
-                                <h2><%= photo.title %></h2>
+                                <h2><%= user.name %></h2>
                             </div>
                             <div class="photo__user">
-                                by <%= photo.user %>
+                                #Photos: <%= user.photos.length %>
                             </div>
                         </div>
                         <p class="photo__description">
-                            <%= photo.description %>
+                            <%= user.name %>
+                            Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum 
                         </p>
                     </div>
 
                     <div class="photo__edit">
-                        <a href="/photos/<%= photo._id %>">Edit</a>
+                        <a href="/users/<%= user._id %>">Edit</a>
                     </div>
                 </figure></li>
             <% }) %>
         </ul>
-        <a href="/photos/new" class="btn create">Add New Photo</a>
+        <a href="/users/new" class="btn create">Add New User</a>
     </main>
 
 <%- include('../partials/footer') %>
