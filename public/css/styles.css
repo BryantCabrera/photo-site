@@ -1,10 +1,11 @@
 /******************************/
 /********** Set-Up **********/
 /******************************/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 :root {
     --background-color-1: #67b26f;
     --background-color-2: #4ca2cd;
-    --background-color-3: #5aaa9d
+    --background-color-3: #5aaa9d;
 
 
     --button-color-1: rgba(247, 216, 87, 0.8);
@@ -31,6 +32,7 @@
 }
 
 html {
+    font-family: Roboto;
     font-size: 62.5%;
 }
 
@@ -72,7 +74,14 @@ body {
 /******************************/
 /********** Nav **********/
 /******************************/
+a {
+   text-decoration: none;
+   color: var(--color-white); 
+}
 
+a:hover {
+    text-transform: uppercase;
+}
 
 
 /******************************/
@@ -88,6 +97,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0 10rem;
 }
 
 h1 {
@@ -98,11 +108,82 @@ ul {
     grid-area: imgs;
 }
 
+ul li {
+    list-style: none;
+}
+
+/********** Index **********/
 .create {
     grid-area: btn;
     justify-self: center;
 }
 
+.photo {
+    display: flex;
+    align-items: stretch;
+    max-width: 80rem;
+    margin-bottom: 1rem;
+    border-radius: .4rem;
+    overflow: hidden;
+    box-shadow: 0 3rem 8rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.photo__hero {
+    flex: 0 0 45%;
+}
+
+.photo__img {
+    width: 100%;
+    display: block;
+}
+
+.photo__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 3.5rem 3rem;
+    background: white;
+}
+
+.photo__edit {
+    flex: 0 1 5rem;
+    background: linear-gradient(to bottom, var(--background-color-1), var(--background-color-2));
+    writing-mode: vertical-rl;
+    color: white;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo__heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.pizza__title {
+font-size: 2rem;
+margin-right: auto;
+}
+
+.photo__user {
+    width: 10rem;
+    padding: .2rem .7rem;
+    margin-left: .7rem;
+    border-radius: 10rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: white;
+    background-color: var(--background-color-1);
+}
+
+.photo__user--1 { background-color: var(--background-color-1); }
+
+.photo__user--2 { background-color: var(--background-color-2); }
+
+.photo__description { font-size: 1.4rem; }
 /******************************/
 /********** Footer **********/
 /******************************/
