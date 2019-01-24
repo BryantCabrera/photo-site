@@ -10,7 +10,6 @@
             User: <select name="userId">
                     <% for (let i = 0; i < users.length; i++) { %>
                     <option value="<%= users[i]._id %>"><%= users[i].name %></option>
-        
                     <% } %>
                 </select><br>
             URL: <input type="text" name="url"><br>
