@@ -9,6 +9,17 @@ const Photo = require('../models/photos');
 
 /********** ROUTES **********/
 //Index Route
+router.get('/', (req, res) => {
+    User.find({}, (err, allUsers) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('../views/users/index.ejs', {
+                users: allUsers
+            });
+        }
+    });
+});
 
 //New Route
 
