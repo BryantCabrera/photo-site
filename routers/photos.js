@@ -53,13 +53,22 @@ router.post('/', (req, res) => {
 //Edit Route
 router.get('/:id/edit', (req, res) => {
     Photo.findById(req.params.id, (err, foundPhoto) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.render('../views/photos/edit.ejs', {
-                photo: foundPhoto
+        User.find({}, (err, allUsers) => {
+            User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
+                console.log(foundUser);
+
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.render('../views/photos/edit.ejs', {
+                        photo: foundPhoto,
+                        users: allUsers,
+                        photoUser: foundUser
+                    });
+                }
             });
-        }
+        });
+        
     });
 });
 
@@ -91,7 +100,7 @@ router.get('/:id', (req, res) => {
 //Delete Route
 router.delete('/:id', (req, res) => {
     Photo.findByIdAndRemove(req.params.id, (err, deletedPhoto) => {
-        User.findOne({'articles._id': req.params.id}, (err, foundUser) => {
+        User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
             foundUser.photos.id(req.params.id).remove();
             foundUser.save((err, data) => {
                 if (err) {
