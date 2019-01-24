@@ -1,0 +1,37 @@
+<%- include('../partials/header', { 
+    title: 'Photos Index Page'
+}); %>
+
+    <main>
+        <h1>Photos Index Page</h1>
+        <ul>
+            <% photos.forEach( photo => { %>
+                <li><figure class="photo">
+                    <div class="photo__hero">
+                        <img src="<%= photo.url %>" alt="<%= photo.title %> Image" title="<%= photo.title %> Image" class="photo__img">
+                    </div>
+
+                    <div class="photo__content">
+                        <div class="photo__heading">
+                            <div class="photo__title">
+                                <h2><%= photo.title %></h2>
+                            </div>
+                            <div class="photo__user">
+                                by <%= photo.user %>
+                            </div>
+                        </div>
+                        <p class="photo__description">
+                            <%= photo.description %>
+                        </p>
+                    </div>
+
+                    <div class="photo__edit">
+                        <a href="/photos/<%= photo._id %>">Edit</a>
+                    </div>
+                </figure></li>
+            <% }) %>
+        </ul>
+        <a href="/photos/new" class="btn create">Add New Photo</a>
+    </main>
+
+<%- include('../partials/footer') %>

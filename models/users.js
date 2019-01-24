@@ -4,7 +4,7 @@ const Photo = require('./photos');
 const userSchema = new mongoose.Schema({
     name: {type: String, required: true},
     password: {type: String, required: true},
-    photos: [Photo.Schema],
+    photos: [Photo.schema],
     description: String
 });
 
