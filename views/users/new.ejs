@@ -1,0 +1,16 @@
+<%- include('../partials/header', { 
+    title: 'New Photos Page'
+}); %>
+
+    <main>
+        <h1>New Users Page</h1>
+        
+        <form action="/users" method="POST">
+            Name: <input type="text" name="name"><br>
+            Password: <input type="text" name="password"><br>
+            Description: <input type="text" name="description"><br>
+            <button type="submit">Create New User</button>
+        </form>
+    </main>
+
+<%- include('../partials/footer') %>
