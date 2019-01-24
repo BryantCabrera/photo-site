@@ -52,6 +52,16 @@ router.get('/:id/edit', (req, res) => {
 });
 
 //Update Route
+router.put('/:id', (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log(updatedUser);
+            res.redirect('/users');
+        }
+    });
+});
 
 //Show Route
 router.get('/:id', (req, res) => {
