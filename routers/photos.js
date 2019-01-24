@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const Photo = require('../models/photos');
+const User = require('../models/users');
 
 /********** MIDDLEWARE **********/
 

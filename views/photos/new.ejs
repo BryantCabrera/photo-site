@@ -8,8 +8,8 @@
         <form action="/photos" method="POST">
             
             User: <select name="userId">
-                    <% for (let i = 0; i < authors.length; i++) { %>
-                    <option value="<%= authors[i]._id %>"><%= authors[i].name %></option>
+                    <% for (let i = 0; i < users.length; i++) { %>
+                    <option value="<%= users[i]._id %>"><%= users[i].name %></option>
         
                     <% } %>
                 </select><br>
